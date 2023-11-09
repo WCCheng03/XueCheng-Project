@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.xuecheng</groupId>
+        <artifactId>XueCheng-Content</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>XueCheng-Content-Model</artifactId>
+    <name>XueCheng-Content-Model</name>
+    <description>XueCheng-Content-Model</description>
+    <version>0.0.1-SNAPSHOT</version>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.xuecheng</groupId>
+            <artifactId>XueCheng-Base</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+</project>
