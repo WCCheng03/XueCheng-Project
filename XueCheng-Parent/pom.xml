@@ -2,12 +2,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <parent>
+<!--    <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.1.5</version>
-        <relativePath/> <!-- lookup parent from repository -->
-    </parent>
+        <relativePath/> &lt;!&ndash; lookup parent from repository &ndash;&gt;
+    </parent>-->
     <groupId>com.xuecheng</groupId>
     <artifactId>XueCheng-Parent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
@@ -15,7 +15,7 @@
     <description>XueCheng-Parent</description>
     <packaging>pom</packaging>
     <properties>
-        <java.version>17</java.version>
+        <java.version>11</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <spring-boot.version>2.3.7.RELEASE</spring-boot.version>
@@ -218,9 +218,9 @@
                 <version>3.8.1</version>
                 <configuration>
                     <!--指定项目源码jdk的版本-->
-                    <source>17</source>
+                    <source>11</source>
                     <!--指定项目编译后的jdk的版本-->
-                    <target>17</target>
+                    <target>11</target>
                     <!--配置注解预编译-->
                     <annotationProcessorPaths>
                         <path>
@@ -245,10 +245,10 @@
             </plugin>
 
 
-            <plugin>
+<!--            <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
+            </plugin>-->
         </plugins>
     </build>
 <!--    -->
