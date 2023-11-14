@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -26,22 +27,12 @@ import java.util.List;
 @Slf4j
 @RestController
 public class CourseCategoryController {
-    @Autowired
+    @Resource
     CourseCategoryService courseCategoryService;
-    @Autowired
-    CourseBaseInfoService courseBaseInfoService;
 
     @GetMapping("/course-category/tree-nodes")
     public List<CourseCategoryTreeDto> queryTreeNodes() {
-        return courseCategoryService.queryTreeNodes("1");
-    }
-
-    @ApiOperation("新增课程基础信息")
-    @PostMapping("/course")
-    public CourseBaseInfoDto createCourseBase(@RequestBody AddCourseDto addCourseDto) {
-        //获取用户所属机构id
-        Long companyId = 1232141425L;
-        return courseBaseInfoService.createCourseBase(companyId, addCourseDto);
+        return courseCategoryService.getQueryTreeNodes("1");
     }
 
 }

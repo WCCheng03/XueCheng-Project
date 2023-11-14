@@ -34,7 +34,7 @@ public class CourseCategoryServiceImpl implements CourseCategoryService {
     CourseCategoryMapper courseCategoryMapper;
 
     @Override
-    public List<CourseCategoryTreeDto> queryTreeNodes(String id) {
+    public List<CourseCategoryTreeDto> getQueryTreeNodes(String id) {
         List<CourseCategoryTreeDto> courseCategoryTreeDtos = courseCategoryMapper.selectTreeNodes(id);
         //将list转map,以备使用,排除根节点
         Map<String, CourseCategoryTreeDto> mapTemp = courseCategoryTreeDtos

@@ -22,7 +22,7 @@ public enum CommonError {
 		return errMessage;
 	}
 
-	private CommonError( String errMessage) {
+	private CommonError(String errMessage) {
 		this.errMessage = errMessage;
 	}
 

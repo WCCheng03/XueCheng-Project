@@ -12,6 +12,6 @@ public interface CourseCategoryService {
      *
      * @return
      */
-    public List<CourseCategoryTreeDto> queryTreeNodes(String id);
+    public List<CourseCategoryTreeDto> getQueryTreeNodes(String id);
 
 }
