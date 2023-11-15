@@ -41,7 +41,7 @@ Content-Type: application/json
 
 
 ### 查询某个课程的课程计划
-GET {{content_host}}/content/teachplan/117/tree-nodes
+GET {{content_host}}/content/teachplan/121/tree-nodes
 
 
 ### 新增课程计划--章
@@ -54,3 +54,7 @@ Content-Type: application/json
   "grade" : 1,
   "pname" : "新章名称 [点击修改]"
 }
+
+
+###师资管理查询
+GET {{content_host}}/content/courseTeacher/list/{id}

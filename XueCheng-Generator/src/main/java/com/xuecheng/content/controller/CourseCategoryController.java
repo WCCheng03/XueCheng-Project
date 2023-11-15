@@ -18,10 +18,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 /*
 @Slf4j
 @RestController
-@RequestMapping("courseCategory")
+@RequestMapping("courseCategory")*/
 public class CourseCategoryController {
 
-    @Autowired
+//    @Autowired
     private CourseCategoryService  courseCategoryService;
 }
-*/
+

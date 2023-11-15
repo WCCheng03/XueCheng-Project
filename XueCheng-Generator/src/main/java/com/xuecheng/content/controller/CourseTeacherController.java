@@ -15,9 +15,9 @@ import org.springframework.beans.factory.annotation.Autowired;
  *
  * @author itcast
  */
-@Slf4j
-@RestController
-@RequestMapping("courseTeacher")
+//@Slf4j
+//@RestController
+//@RequestMapping("courseTeacher")
 public class CourseTeacherController {
 
     @Autowired

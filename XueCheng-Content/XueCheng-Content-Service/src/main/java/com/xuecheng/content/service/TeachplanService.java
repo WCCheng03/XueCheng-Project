@@ -31,4 +31,9 @@ public interface TeachplanService {
      */
     public void saveTeachplan(SaveTeachplanDto teachplanDto);
 
+
+    public Integer deleteTeachplan(Long id);
+
+    Boolean moveUpTeachplan(Long teachplanId);
+    Boolean moveDownTeachplan(Long teachplanId);
 }

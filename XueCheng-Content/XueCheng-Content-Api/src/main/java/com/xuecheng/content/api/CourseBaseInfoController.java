@@ -21,7 +21,7 @@ import java.util.List;
 
 /**
  * @ClassName CourseBaseInfoController
- * @Author 24348
+ * @Author Chen9
  * @Date 2023/11/9 20:02
  * @VERSION 1.0
  * @Description 课程信息编辑接口
@@ -35,8 +35,7 @@ public class CourseBaseInfoController {
     @ApiOperation("课程分页查询接口")
     @PostMapping("/course/list")
     public PageResult<CourseBase> list(PageParams pageParams,@RequestBody(required = false) QueryCourseParamsDto queryCourseParamsDto){
-        PageResult<CourseBase> courseBasePageResult = courseBaseInfoService.queryCourseBaseList(pageParams, queryCourseParamsDto);
-        return courseBasePageResult;
+        return courseBaseInfoService.queryCourseBaseList(pageParams, queryCourseParamsDto);
     }
 
     @ApiOperation("新增课程基础信息")
@@ -61,4 +60,9 @@ public class CourseBaseInfoController {
         return courseBaseInfoService.updateCourseBase(companyId,editCourseDto);
     }
 
+    @ApiOperation("删除课程")
+    @DeleteMapping("/course/{id}")
+    public void deleteCourse(@PathVariable Long id){
+        courseBaseInfoService.deleteCourse(id);
+    }
 }

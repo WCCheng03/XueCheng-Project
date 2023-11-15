@@ -18,10 +18,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 /*
 @Slf4j
 @RestController
-@RequestMapping("teachplan")
+@RequestMapping("teachplan")*/
 public class TeachplanController {
 
-    @Autowired
+//    @Autowired
     private TeachplanService  teachplanService;
 }
-*/
+

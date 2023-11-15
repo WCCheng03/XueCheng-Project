@@ -26,7 +26,7 @@ public class CourseCategoryServiceTests {
     CourseCategoryService courseCategoryService;
     @Test
     void testqueryTreeNodes() {
-        List<CourseCategoryTreeDto> courseCategoryTreeDtos = courseCategoryService.queryTreeNodes("1");
+        List<CourseCategoryTreeDto> courseCategoryTreeDtos = courseCategoryService.getQueryTreeNodes("1");
         System.out.println(courseCategoryTreeDtos);
     }
 

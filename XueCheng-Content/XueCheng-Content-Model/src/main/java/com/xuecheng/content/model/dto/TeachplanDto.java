@@ -14,7 +14,7 @@ import java.util.List;
  * @date 2022/9/9 10:27
  * @version 1.0
  */
-@EqualsAndHashCode(callSuper = true)
+//@EqualsAndHashCode(callSuper = true)
 @Data
 @ToString
 public class TeachplanDto extends Teachplan {

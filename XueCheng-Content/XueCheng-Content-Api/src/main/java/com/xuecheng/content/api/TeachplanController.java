@@ -1,8 +1,11 @@
 package com.xuecheng.content.api;
 
 
+import com.xuecheng.base.exception.XueChengException;
+import com.xuecheng.base.model.PageResult;
 import com.xuecheng.content.model.dto.SaveTeachplanDto;
 import com.xuecheng.content.model.dto.TeachplanDto;
+import com.xuecheng.content.model.po.Teachplan;
 import com.xuecheng.content.service.TeachplanService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -35,8 +38,27 @@ public class TeachplanController {
 
     @ApiOperation("课程计划创建或修改")
     @PostMapping("/teachplan")
-    public void saveTeachplan( @RequestBody SaveTeachplanDto teachplan){
+    public void saveTeachplan(@RequestBody SaveTeachplanDto teachplan){
         teachplanService.saveTeachplan(teachplan);
+    }
+
+    @ApiOperation("删除课程计划")
+    @DeleteMapping("/teachplan/{teachplanId}")
+    public Boolean deleteTeachplan(@PathVariable Long teachplanId){
+        Integer i = teachplanService.deleteTeachplan(teachplanId);
+        if (i!=1) XueChengException.cast("课程计划信息还有子级信息，无法操作");
+        return true;
+    }
+
+    @ApiOperation("课程计划上移")
+    @PostMapping("/teachplan/moveup/{teachplanId}")
+    public Boolean moveUpTeachplan(@PathVariable Long teachplanId){
+        return teachplanService.moveUpTeachplan(teachplanId);
+    }
+    @ApiOperation("课程计划下移")
+    @PostMapping("/teachplan/movedown/{teachplanId}")
+    public Boolean moveDownTeachplan(@PathVariable Long teachplanId){
+        return teachplanService.moveDownTeachplan(teachplanId);
     }
 
 }
