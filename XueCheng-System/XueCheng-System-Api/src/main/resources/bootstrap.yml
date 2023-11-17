@@ -2,10 +2,36 @@ server:
   servlet:
     context-path: /system
   port: 63110
+
 #微服务配置
 spring:
+  profiles:
+    active: dev #环境名
   application:
-    name: system-api
+    name: system-api #服务名
+  cloud:
+    nacos:
+      server-addr: 172.30.85.69:8848
+      discovery: #服务注册相关配置
+        namespace: ${spring.profiles.active}
+        group: xuecheng-project
+      config: #配置文件相关配置
+        namespace: ${spring.profiles.active}
+        group: xuecheng-project
+        file-extension: yaml
+        refresh-enabled: true
+        extension-configs: #引用nacos下的配置文件的配置
+          - data-id: system-service-${spring.profiles.active}.yaml
+            group: xuecheng-project
+            refresh: true
+        shared-configs:
+          - data-id: swagger-${spring.profiles.active}.yaml
+            group: xuecheng-common
+            refresh: true
+          - data-id: logging-${spring.profiles.active}.yaml
+            group: xuecheng-common
+            refresh: true
+
 # 日志文件配置路径
-logging:
-  config: classpath:log4j2-dev.xml
+#logging:
+#  config: classpath:log4j2-dev.xml

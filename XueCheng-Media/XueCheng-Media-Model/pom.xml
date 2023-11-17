@@ -2,17 +2,14 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <parent>
+        <artifactId>XueCheng-Media</artifactId>
         <groupId>com.xuecheng</groupId>
-        <artifactId>XueCheng-Content</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-
-    <artifactId>XueCheng-Content-Model</artifactId>
-    <name>XueCheng-Content-Model</name>
-    <description>XueCheng-Content-Model</description>
-    <version>0.0.1-SNAPSHOT</version>
+    <artifactId>XueCheng-Media-Model</artifactId>
+    <name>XueCheng-Media-Model</name>
+    <description>XueCheng-Media-Model</description>
 
     <dependencies>
         <dependency>
@@ -20,7 +17,6 @@
             <artifactId>XueCheng-Base</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
-
         <!--存在mybatisplus注解添加相关注解保证不报错-->
         <dependency>
             <groupId>com.baomidou</groupId>
@@ -37,4 +33,5 @@
             <artifactId>lombok</artifactId>
         </dependency>
     </dependencies>
+
 </project>

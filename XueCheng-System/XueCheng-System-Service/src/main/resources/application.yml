@@ -1,13 +1,26 @@
+#spring:
+#  application:
+#    name: system-service
+#  datasource:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://172.30.85.69:3306/xc_system?serverTimezone=UTC&userUnicode=true&useSSL=false
+#    username: root
+#    password: Wwc050619
 spring:
+  profiles:
+    active: dev
   application:
     name: system-service
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://172.30.85.69:3306/xc_system?serverTimezone=UTC&userUnicode=true&useSSL=false
-    username: root
-    password: Wwc050619
+  cloud:
+    nacos:
+      server-addr: 172.30.85.69:8848
+      config: #配置文件相关配置
+        namespace: dev
+        group: xuecheng-project
+        file-extension: yaml
+        refresh-enabled: true
+
 # 日志文件配置路径
 logging:
   config: classpath:log4j2-dev.xml
-
 
