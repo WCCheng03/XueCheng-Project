@@ -8,6 +8,8 @@ import com.xuecheng.media.model.dto.UploadFileParamsDto;
 import com.xuecheng.media.model.dto.UploadFileResultDto;
 import com.xuecheng.media.model.po.MediaFiles;
 
+import java.io.File;
+
 
 /**
  * @author Mr.M
@@ -38,11 +40,30 @@ public interface MediaFileService {
     UploadFileResultDto uploadFile(Long companyId, UploadFileParamsDto uploadFileParamsDto, String localFilePath);
 
     /**
+     * 将文件上传到minio
+     * @param localFilePath 文件本地路径
+     * @param mimeType 媒体类型
+     * @param bucket 桶
+     * @param objectName 对象名
+     * @return
+     */
+    boolean addMediaFilesToMinIO(String localFilePath,String mimeType,String bucket, String objectName);
+
+    /**
      * @author CHEN9
      * @date 2023/11/16 20:02
      * @description 添加媒体文件到数据库
      * @param
      **/
     MediaFiles addMediaFilesToDb(Long companyId, String fileMd5, UploadFileParamsDto uploadFileParamsDto, String bucket, String objectName);
+
+    /**
+     * 从minio下载文件
+     * @param bucket 桶
+     * @param objectName 对象名称
+     * @return 下载后的文件
+     */
+    File downloadFileFromMinIO(String bucket, String objectName);
+
 
 }

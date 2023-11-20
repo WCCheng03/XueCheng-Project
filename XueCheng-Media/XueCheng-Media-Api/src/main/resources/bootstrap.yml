@@ -4,6 +4,10 @@ spring:
     active: dev
   application:
     name: media-api
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
   cloud:
     nacos:
       server-addr: 172.30.85.69:8848

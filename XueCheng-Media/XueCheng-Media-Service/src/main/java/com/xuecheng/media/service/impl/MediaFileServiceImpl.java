@@ -8,11 +8,14 @@ import com.xuecheng.base.exception.XueChengException;
 import com.xuecheng.base.model.PageParams;
 import com.xuecheng.base.model.PageResult;
 import com.xuecheng.media.mapper.MediaFilesMapper;
+import com.xuecheng.media.mapper.MediaProcessMapper;
 import com.xuecheng.media.model.dto.QueryMediaParamsDto;
 import com.xuecheng.media.model.dto.UploadFileParamsDto;
 import com.xuecheng.media.model.dto.UploadFileResultDto;
 import com.xuecheng.media.model.po.MediaFiles;
+import com.xuecheng.media.model.po.MediaProcess;
 import com.xuecheng.media.service.MediaFileService;
+import io.minio.GetObjectArgs;
 import io.minio.MinioClient;
 import io.minio.UploadObjectArgs;
 import lombok.extern.slf4j.Slf4j;
@@ -25,8 +28,7 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.io.File;
-import java.io.FileInputStream;
+import java.io.*;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.Date;
@@ -44,17 +46,16 @@ public class MediaFileServiceImpl implements MediaFileService {
 
     @Autowired
     MediaFilesMapper mediaFilesMapper;
-
+    @Autowired
+    MediaProcessMapper mediaProcessMapper;
     @Autowired
     MinioClient minioClient;
-
     @Autowired
     MediaFileService currentProxy;
 
     //存普通文件桶
     @Value("${minio.bucket.files}")
     private String bucket_files;
-
     //存视频文件通
     @Value("${minio.bucket.videofiles}")
     private String bucket_viceo;
@@ -203,11 +204,68 @@ public class MediaFileServiceImpl implements MediaFileService {
                 log.error("保存文件信息到数据库失败,{}", mediaFiles.toString());
                 XueChengException.cast("保存文件信息失败");
             }
+            //添加到待处理任务表
+            addWaitingTask(mediaFiles);
             log.debug("保存文件信息到数据库成功,{}", mediaFiles.toString());
 
         }
         return mediaFiles;
-
     }
+
+    /**
+     * 添加待处理任务
+     * @param mediaFiles 媒资文件信息
+     */
+    private void addWaitingTask(MediaFiles mediaFiles){
+        //文件名称
+        String filename = mediaFiles.getFilename();
+        //文件扩展名
+        String exension = filename.substring(filename.lastIndexOf("."));
+        //文件mimeType
+        String mimeType = getMimeType(exension);
+        //如果是avi视频添加到视频待处理表
+        if(mimeType.equals("video/x-msvideo")){
+            MediaProcess mediaProcess = new MediaProcess();
+            BeanUtils.copyProperties(mediaFiles,mediaProcess);
+            mediaProcess.setStatus("1");//未处理
+            mediaProcess.setFailCount(0);//失败次数默认为0
+            mediaProcessMapper.insert(mediaProcess);
+        }
+    }
+    /**
+     * 从minio下载文件
+     * @param bucket 桶
+     * @param objectName 对象名称
+     * @return 下载后的文件
+     */
+    @Override
+    public File downloadFileFromMinIO(String bucket,String objectName){
+        //临时文件
+        File minioFile = null;
+        FileOutputStream outputStream = null;
+        try{
+            InputStream stream = minioClient.getObject(GetObjectArgs.builder()
+                    .bucket(bucket)
+                    .object(objectName)
+                    .build());
+            //创建临时文件
+            minioFile=File.createTempFile("minio", ".merge");
+            outputStream = new FileOutputStream(minioFile);
+            org.apache.commons.io.IOUtils.copy(stream,outputStream);
+            return minioFile;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            if(outputStream!=null){
+                try {
+                    outputStream.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return null;
+    }
+
 
 }
