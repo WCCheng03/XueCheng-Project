@@ -49,6 +49,7 @@ public class VideoTask {
         int shardIndex = XxlJobHelper.getShardIndex();
         int shardTotal = XxlJobHelper.getShardTotal();
         List<MediaProcess> mediaProcessList = null;
+        //创建线程池
         int size = 0;
         try {
             //取出cpu核心数作为一次处理数据的条数
@@ -89,7 +90,7 @@ public class VideoTask {
                     String fileId = mediaProcess.getFileId();
                     //原始文件名称
                     String filename = mediaProcess.getFilename();
-                    //将要处理的文件下载到服务器上
+                    //将要处理的文件下载到Minio服务器上
                     File originalFile = mediaFileService.downloadFileFromMinIO(mediaProcess.getBucket(), mediaProcess.getFilePath());
                     if (originalFile == null) {
                         log.debug("下载待处理文件失败,originalFile:{}", mediaProcess.getBucket().concat(mediaProcess.getFilePath()));
