@@ -24,7 +24,7 @@ public interface CourseBaseInfoService {
      * @Param 
      * @return 
      **/
-    PageResult<CourseBase> queryCourseBaseList(PageParams pageParams, QueryCourseParamsDto courseParamsDto);
+    PageResult<CourseBase> queryCourseBaseList(PageParams pageParams, QueryCourseParamsDto courseParamsDto,Long companyId);
 
 
     /**

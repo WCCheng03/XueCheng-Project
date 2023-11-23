@@ -26,6 +26,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 
 import java.io.*;
 import java.text.SimpleDateFormat;
@@ -79,7 +80,8 @@ public class MediaFileServiceImpl implements MediaFileService {
 
     }
 
-    public UploadFileResultDto uploadFile(Long companyId, UploadFileParamsDto uploadFileParamsDto, String localFilePath) {
+    @Override
+    public UploadFileResultDto uploadFile(Long companyId, UploadFileParamsDto uploadFileParamsDto, String localFilePath , String objectName) {
         File file = new File(localFilePath);
         if (!file.exists()) {
             XueChengException.cast("文件不存在");
@@ -95,7 +97,9 @@ public class MediaFileServiceImpl implements MediaFileService {
         //文件的默认目录
         String defaultFolderPath = getDefaultFolderPath();
         //存储到minio中的对象名(带目录)
-        String objectName = defaultFolderPath + fileMd5 + extension;
+        if (StringUtils.isEmpty(objectName)){
+            objectName = defaultFolderPath + fileMd5 + extension;
+        }
         //将文件上传到minio
         boolean b = addMediaFilesToMinIO(localFilePath, mimeType, bucket_files, objectName);
         //文件大小

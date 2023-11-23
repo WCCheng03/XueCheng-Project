@@ -5,11 +5,19 @@ spring:
   cloud:
     nacos:
       server-addr: 172.30.85.69:8848
+      discovery:
+        namespace: dev
+        group: xuecheng-project
       config: #配置文件相关配置
         namespace: dev
         group: xuecheng-project
         file-extension: yaml
         refresh-enabled: true
+        shared-configs:
+          - data-id: feign-${spring.profiles.active}.yaml
+            group: xuecheng-plus-common
+            refresh: true
+
   profiles:
     active: dev   #环境名
 #  datasource:
