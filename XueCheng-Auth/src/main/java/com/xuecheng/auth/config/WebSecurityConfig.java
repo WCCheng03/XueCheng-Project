@@ -22,25 +22,10 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
  * @date 2022/9/26 20:53
  */
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(securedEnabled = true,prePostEnabled = true)
+@EnableGlobalMethodSecurity(securedEnabled = true, prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     DaoAuthenticationProviderCustom daoAuthenticationProviderCustom;
-
-    //配置用户信息服务
-//    @Bean
-//    public UserDetailsService userDetailsService() {
-//        //这里配置用户信息,这里暂时使用这种方式将用户存储在内存中
-//        InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
-//        manager.createUser(User.withUsername("zhangsan").password("123").authorities("p1").build());
-//        manager.createUser(User.withUsername("lisi").password("456").authorities("p2").build());
-//        return manager;
-//    }
-
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.authenticationProvider(daoAuthenticationProviderCustom);
-    }
 
 
     @Bean
@@ -55,26 +40,43 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.authenticationProvider(daoAuthenticationProviderCustom);
+    }
+
     //配置安全拦截机制
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
                 .antMatchers("/r/**").authenticated()//访问/r开始的请求需要认证通过
-                .antMatchers("/auth/findpassword").permitAll()
+//                .antMatchers("/auth/findpassword").permitAll()
                 .anyRequest().permitAll()//其它请求全部放行
                 .and()
                 .formLogin().successForwardUrl("/login-success");//登录成功跳转到/login-success
     }
 
+    //配置用户信息服务
+//    @Bean
+//    public UserDetailsService userDetailsService() {
+//        //这里配置用户信息,这里暂时使用这种方式将用户存储在内存中
+//        InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
+//        manager.createUser(User.withUsername("zhangsan").password("123").authorities("p1").build());
+//        manager.createUser(User.withUsername("lisi").password("456").authorities("p2").build());
+//        return manager;
+//    }
+
     public static void main(String[] args) {
-        String password = "111111";
+        /*String password = "111111";
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
         //加密密码
         String encode = bCryptPasswordEncoder.encode(password);
         System.out.println(encode);
         //校验密码
         boolean matches = bCryptPasswordEncoder.matches(password, encode);
-        System.out.println(matches);
+        System.out.println(matches);*/
+
+
     }
 }

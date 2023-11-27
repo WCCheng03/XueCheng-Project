@@ -5,10 +5,10 @@ POST {{auth_host}}/auth/oauth/token?client_id=XcWebApp&client_secret=XcWebApp&gr
 
 
 ### 密码模式
-POST {{auth_host}}/auth/oauth/token?client_id=XcWebApp&client_secret=XcWebApp&grant_type=password&username=t1&password=111111
+POST {{auth_host}}/auth/oauth/token?client_id=XcWebApp&client_secret=XcWebApp&grant_type=password&username=stu1&password=111111
 
 ###校验jwt令牌
 POST {{auth_host}}/auth/oauth/check_token?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsieHVlY2hlbmciXSwidXNlcl9uYW1lIjoie1wiY29tcGFueUlkXCI6XCIxMjMyMTQxNDI1XCIsXCJjcmVhdGVUaW1lXCI6XCIyMDIyLTA5LTI4VDA4OjMyOjAzXCIsXCJpZFwiOlwiNTJcIixcIm5hbWVcIjpcIk3ogIHluIhcIixcInNleFwiOlwiMVwiLFwic3RhdHVzXCI6XCJcIixcInVzZXJuYW1lXCI6XCJ0MVwiLFwidXR5cGVcIjpcIjEwMTAwMlwifSIsInNjb3BlIjpbImFsbCJdLCJleHAiOjE3MDA3MTEyNjUsImF1dGhvcml0aWVzIjpbInRlc3QiXSwianRpIjoiZDk2NTI1NjUtNjk5ZC00MjU4LWEwYjAtNzliZWMxZjEyNjFhIiwiY2xpZW50X2lkIjoiWGNXZWJBcHAifQ.7OXmBGC3W_rhbBwa7SsO7N4e0mNIMJxhwGJKIEkQV9U
 
 ### 密码模式，请求AuthParamsDto中的参数
-POST {{auth_host}}/auth/oauth/token?client_id=XcWebApp&client_secret=XcWebApp&grant_type=password&username={"username":"t1","authType":"password","password":"111111"}
+POST {{auth_host}}/auth/oauth/token?client_id=XcWebApp&client_secret=XcWebApp&grant_type=password&username={"username":"stu1","authType":"password","password":"111111"}
