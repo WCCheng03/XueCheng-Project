@@ -2,18 +2,27 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-<!--    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.1.5</version>
-        <relativePath/> &lt;!&ndash; lookup parent from repository &ndash;&gt;
-    </parent>-->
     <groupId>com.xuecheng</groupId>
     <artifactId>XueCheng-Parent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>XueCheng-Parent</name>
     <description>XueCheng-Parent</description>
     <packaging>pom</packaging>
+
+    <modules>
+        <module>../XueCheng-Base</module>
+        <module>../XueCheng-Checkcode</module>
+        <module>../XueCheng-Gateway</module>
+        <module>../XueCheng-Auth</module>
+        <module>../XueCheng-Content</module>
+        <module>../XueCheng-Learning</module>
+        <module>../XueCheng-Media</module>
+        <module>../XueCheng-Orders</module>
+        <module>../XueCheng-Message-sdk</module>
+        <module>../XueCheng-Search</module>
+        <module>../XueCheng-System</module>
+    </modules>
+
     <properties>
         <java.version>11</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -244,12 +253,7 @@
                 </configuration>
             </plugin>
 
-
-<!--            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>-->
         </plugins>
     </build>
-<!--    -->
+
 </project>

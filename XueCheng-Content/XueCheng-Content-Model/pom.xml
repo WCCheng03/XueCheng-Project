@@ -10,9 +10,6 @@
     </parent>
 
     <artifactId>XueCheng-Content-Model</artifactId>
-    <name>XueCheng-Content-Model</name>
-    <description>XueCheng-Content-Model</description>
-    <version>0.0.1-SNAPSHOT</version>
 
     <dependencies>
         <dependency>

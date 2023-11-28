@@ -40,7 +40,7 @@ public class CourseBaseInfoServiceTests {
         courseParamsDto.setCourseName("java");//课程名称查询条件
         courseParamsDto.setAuditStatus("202004");//查询审核通过
 
-        PageResult<CourseBase> courseBasePageResult = courseBaseInfoService.queryCourseBaseList(pageParams, courseParamsDto);
+        PageResult<CourseBase> courseBasePageResult = courseBaseInfoService.queryCourseBaseList(pageParams, courseParamsDto, null);
         System.out.println(courseBasePageResult);
     }
 }

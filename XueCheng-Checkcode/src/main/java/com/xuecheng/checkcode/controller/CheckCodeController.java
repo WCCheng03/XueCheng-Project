@@ -1,11 +1,9 @@
 package com.xuecheng.checkcode.controller;
 
-import com.xuecheng.base.model.RestResponse;
 import com.xuecheng.checkcode.model.CheckCodeParamsDto;
 import com.xuecheng.checkcode.model.CheckCodeResultDto;
 import com.xuecheng.checkcode.service.AbstractCheckCodeService;
 import com.xuecheng.checkcode.service.CheckCodeService;
-import com.xuecheng.checkcode.service.FindPasswordService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -14,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import java.util.Map;
 
 /**
  * @author Mr.M

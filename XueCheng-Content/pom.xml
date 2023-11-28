@@ -9,9 +9,6 @@
         <relativePath>../XueCheng-Parent</relativePath> <!-- lookup parent from repository -->
     </parent>
     <artifactId>XueCheng-Content</artifactId>
-    <name>XueCheng-Content</name>
-    <description>XueCheng-Content</description>
-    <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
         <module>XueCheng-Content-Api</module>

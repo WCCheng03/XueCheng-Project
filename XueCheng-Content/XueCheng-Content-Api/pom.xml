@@ -10,9 +10,6 @@
     </parent>
 
     <artifactId>XueCheng-Content-Api</artifactId>
-    <name>XueCheng-Content-Api</name>
-    <description>XueCheng-Content-Api</description>
-    <version>0.0.1-SNAPSHOT</version>
 
     <dependencies>
         <dependency>

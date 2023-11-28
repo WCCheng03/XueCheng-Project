@@ -9,15 +9,14 @@
         <!--基于当前pom.xml找到父工程-->
         <relativePath>../XueCheng-Parent</relativePath> <!-- lookup parent from repository -->
     </parent>
-    <artifactId>XueCheng-Base</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>XueCheng-Base</name>
-    <description>XueCheng-Base</description>
 
-    <packaging>pom</packaging>
+    <artifactId>XueCheng-Base</artifactId>
+
+    <!--<packaging>pom</packaging>
     <properties>
         <java.version>11</java.version>
-    </properties>
+    </properties>-->
+
     <dependencies>
         <dependency>
             <groupId>org.projectlombok</groupId>
