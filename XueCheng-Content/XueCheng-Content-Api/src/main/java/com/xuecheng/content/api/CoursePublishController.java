@@ -62,7 +62,8 @@ public class CoursePublishController {
     @ResponseBody
     @GetMapping("/r/coursepublish/{courseId}")
     public CoursePublish getCoursepublish(@PathVariable("courseId") Long courseId) {
-        CoursePublish coursePublish = coursePublishService.getCoursePublish(courseId);
+//        CoursePublish coursePublish = coursePublishService.getCoursePublish(courseId);
+        CoursePublish coursePublish = coursePublishService.getCoursePublishCache(courseId);
         return coursePublish;
     }
 
@@ -71,7 +72,9 @@ public class CoursePublishController {
     @GetMapping("/course/whole/{courseId}")
     public CoursePreviewDto getCoursePublish(@PathVariable("courseId") Long courseId) {
         //查询课程发布信息
-        CoursePublish coursePublish = coursePublishService.getCoursePublish(courseId);
+//        CoursePublish coursePublish = coursePublishService.getCoursePublish(courseId);
+        //查询课程发布信息优化，先从redis查
+        CoursePublish coursePublish = coursePublishService.getCoursePublishCache(courseId);
         if (coursePublish == null) {
             return new CoursePreviewDto();
         }
